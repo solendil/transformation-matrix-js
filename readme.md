@@ -40,6 +40,12 @@ Using NPM
 
     $ npm install transformation-matrix-js
 
+Using it in Node.js:
+
+    var demo = require("transformation-matrix-js");
+    var matrix = new demo.Matrix();
+
+
 Usage
 -----
 

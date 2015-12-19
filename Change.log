@@ -2,7 +2,7 @@ Change log for 2D Transformation Matrix
 ---------------------------------------
 
 2.0.1
-ADD: NPM package
+ADD: NPM package + Node support
 
 2.0
 ADD: interpolateAnim() suitable for animation and is using decomposition
