@@ -1,7 +1,7 @@
 /*!
-	2D Transformation Matrix v2.0
+	2D Transformation Matrix v2.0.1
 
-	(c) Epistemex 2014-2015
+	(c) Epistemex 2014-2016
 	www.epistemex.com
 	By Ken Nilsen
 	Contributions by leeoniya.
@@ -724,3 +724,6 @@ Matrix.prototype = {
 		return me;
 	}
 };
+
+// Node
+if (typeof exports !== "undefined") {exports.Matrix = Matrix}
