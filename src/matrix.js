@@ -1,10 +1,9 @@
 /*!
-	2D Transformation Matrix v2.0.1
+	2D Transformation Matrix v2.0.2
 
-	(c) Epistemex 2014-2016
-	www.epistemex.com
+	(c) Epistemex.com 2014-2016
 	By Ken Nilsen
-	Contributions by leeoniya.
+	Contributions: leeoniya.
 	License: MIT, header required.
 */
 
@@ -37,7 +36,7 @@ function Matrix(context) {
 
 	me.context = context;
 
-	// reset canvas transformations (if any) to enable 100% sync.
+	// reset canvas transformations to enable 100% sync.
 	if (context) context.setTransform(1, 0, 0, 1, 0, 0);
 }
 
@@ -72,8 +71,6 @@ Matrix.prototype = {
 	 * Reflects incoming (velocity) vector on the normal which will be the
 	 * current transformed x axis. Call when a trigger condition is met.
 	 *
-	 * NOTE: BETA, simple implementation
-	 *
 	 * @param {number} x - vector end point for x (start = 0)
 	 * @param {number} y - vector end point for y (start = 0)
 	 * @returns {{x: number, y: number}}
@@ -86,7 +83,7 @@ Matrix.prototype = {
 		x -= d * v.x;
 		y -= d * v.y;
 
-		return {x:x, y:y};
+		return {x:x, y:y}
 	},
 
 	/**
@@ -122,7 +119,7 @@ Matrix.prototype = {
 	 * @param {number} angle - angle in degrees
 	 */
 	rotateDeg: function(angle) {
-		return this.rotate(angle * Math.PI / 180);
+		return this.rotate(angle * 0.017453292519943295);				// PI / 180
 	},
 
 	/**
@@ -130,7 +127,7 @@ Matrix.prototype = {
 	 * @param {number} f - scale factor for both x and y (1 does nothing)
 	 */
 	scaleU: function(f) {
-		return this._t(f, 0, 0, f, 0, 0);
+		return this._t(f, 0, 0, f, 0, 0)
 	},
 
 	/**
@@ -139,7 +136,7 @@ Matrix.prototype = {
 	 * @param {number} sy - scale factor y (1 does nothing)
 	 */
 	scale: function(sx, sy) {
-		return this._t(sx, 0, 0, sy, 0, 0);
+		return this._t(sx, 0, 0, sy, 0, 0)
 	},
 
 	/**
@@ -147,7 +144,7 @@ Matrix.prototype = {
 	 * @param {number} sx - scale factor x (1 does nothing)
 	 */
 	scaleX: function(sx) {
-		return this._t(sx, 0, 0, 1, 0, 0);
+		return this._t(sx, 0, 0, 1, 0, 0)
 	},
 
 	/**
@@ -155,7 +152,7 @@ Matrix.prototype = {
 	 * @param {number} sy - scale factor y (1 does nothing)
 	 */
 	scaleY: function(sy) {
-		return this._t(1, 0, 0, sy, 0, 0);
+		return this._t(1, 0, 0, sy, 0, 0)
 	},
 
 	/**
@@ -164,7 +161,7 @@ Matrix.prototype = {
 	 * @param {number} sy - amount of shear for y
 	 */
 	shear: function(sx, sy) {
-		return this._t(1, sy, sx, 1, 0, 0);
+		return this._t(1, sy, sx, 1, 0, 0)
 	},
 
 	/**
@@ -180,7 +177,7 @@ Matrix.prototype = {
 	 * @param {number} sy - amount of shear for y
 	 */
 	shearY: function(sy) {
-		return this._t(1, sy, 0, 1, 0, 0);
+		return this._t(1, sy, 0, 1, 0, 0)
 	},
 
 	/**
@@ -189,7 +186,7 @@ Matrix.prototype = {
 	 * @param {number} ay - angle of skew for y
 	 */
 	skew: function(ax, ay) {
-		return this.shear(Math.tan(ax), Math.tan(ay));
+		return this.shear(Math.tan(ax), Math.tan(ay))
 	},
 
 	/**
@@ -197,7 +194,7 @@ Matrix.prototype = {
 	 * @param {number} ax - angle of skew for x
 	 */
 	skewX: function(ax) {
-		return this.shearX(Math.tan(ax));
+		return this.shearX(Math.tan(ax))
 	},
 
 	/**
@@ -205,7 +202,7 @@ Matrix.prototype = {
 	 * @param {number} ay - angle of skew for y
 	 */
 	skewY: function(ay) {
-		return this.shearY(Math.tan(ay));
+		return this.shearY(Math.tan(ay))
 	},
 
 	/**
@@ -225,7 +222,7 @@ Matrix.prototype = {
 		me.d = d;
 		me.e = e;
 		me.f = f;
-		return me._x();
+		return me._x()
 	},
 
 	/**
@@ -234,7 +231,7 @@ Matrix.prototype = {
 	 * @param {number} ty - translation for y
 	 */
 	translate: function(tx, ty) {
-		return this._t(1, 0, 0, 1, tx, ty);
+		return this._t(1, 0, 0, 1, tx, ty)
 	},
 
 	/**
@@ -242,7 +239,7 @@ Matrix.prototype = {
 	 * @param {number} tx - translation for x
 	 */
 	translateX: function(tx) {
-		return this._t(1, 0, 0, 1, tx, 0);
+		return this._t(1, 0, 0, 1, tx, 0)
 	},
 
 	/**
@@ -250,7 +247,7 @@ Matrix.prototype = {
 	 * @param {number} ty - translation for y
 	 */
 	translateY: function(ty) {
-		return this._t(1, 0, 0, 1, 0, ty);
+		return this._t(1, 0, 0, 1, 0, ty)
 	},
 
 	/**
@@ -284,7 +281,7 @@ Matrix.prototype = {
 		me.e = a1 * e2 + c1 * f2 + e1;
 		me.f = b1 * e2 + d1 * f2 + f1;
 
-		return me._x();
+		return me._x()
 	},
 
 	/**
@@ -299,7 +296,7 @@ Matrix.prototype = {
 
 		var im = m.inverse();
 
-		return this._t(im.a, im.b, im.c, im.d, im.e, im.f);
+		return this._t(im.a, im.b, im.c, im.d, im.e, im.f)
 	},
 
 	/**
@@ -317,7 +314,7 @@ Matrix.prototype = {
 		me.e /= d;
 		me.f /= d;
 
-		return me._x();
+		return me._x()
 	},
 
 	/**
@@ -353,7 +350,7 @@ Matrix.prototype = {
 			m.e = (c * f - d * e) / dt;
 			m.f = -(a * f - b * e) / dt;
 
-			return m;
+			return m
 		}
 	},
 
@@ -384,7 +381,7 @@ Matrix.prototype = {
 		m.e = me.e + (m2.e - me.e) * t;
 		m.f = me.f + (m2.f - me.f) * t;
 
-		return m._x();
+		return m._x()
 	},
 
 	/**
@@ -405,22 +402,23 @@ Matrix.prototype = {
 	 */
 	interpolateAnim: function(m2, t, context) {
 
-		var me = this,
-			m = context ? new Matrix(context) : new Matrix(),
-			d1 = me.decompose(),
+		var	m = context ? new Matrix(context) : new Matrix(),
+			d1 = this.decompose(),
 			d2 = m2.decompose(),
+		   	t1 = d1.translate,
+			s1 = d1.scale,
 			rotation = d1.rotation + (d2.rotation - d1.rotation) * t,
-			translateX = d1.translate.x + (d2.translate.x - d1.translate.x) * t,
-			translateY = d1.translate.y + (d2.translate.y - d1.translate.y) * t,
-			scaleX = d1.scale.x + (d2.scale.x - d1.scale.x) * t,
-			scaleY = d1.scale.y + (d2.scale.y - d1.scale.y) * t
+			translateX = t1.x + (d2.translate.x - t1.x) * t,
+			translateY = t1.y + (d2.translate.y - t1.y) * t,
+			scaleX = s1.x + (d2.scale.x - s1.x) * t,
+			scaleY = s1.y + (d2.scale.y - s1.y) * t
 			;
 
 		m.translate(translateX, translateY);
 		m.rotate(rotation);
 		m.scale(scaleX, scaleY);
 
-		return m._x();
+		return m._x()
 	},
 
 	/**
@@ -494,7 +492,7 @@ Matrix.prototype = {
 			translate: translate,
 			rotation : rotation,
 			skew     : skew
-		};
+		}
 	},
 
 	/**
@@ -502,7 +500,7 @@ Matrix.prototype = {
 	 * @returns {number}
 	 */
 	determinant : function() {
-		return this.a * this.d - this.b * this.c;
+		return this.a * this.d - this.b * this.c
 	},
 
 	/**
@@ -520,7 +518,7 @@ Matrix.prototype = {
 		return {
 			x: x * me.a + y * me.c + me.e,
 			y: x * me.b + y * me.d + me.f
-		};
+		}
 	},
 
 	/**
@@ -561,7 +559,7 @@ Matrix.prototype = {
 			}
 		}
 
-		return mxPoints;
+		return mxPoints
 	},
 
 	/**
@@ -586,7 +584,7 @@ Matrix.prototype = {
 			mxPoints[i++] = p.y;
 		}
 
-		return mxPoints;
+		return mxPoints
 	},
 
 	/**
@@ -598,7 +596,7 @@ Matrix.prototype = {
 	applyToContext: function(context) {
 		var me = this;
 		context.setTransform(me.a, me.b, me.c, me.d, me.e, me.f);
-		return me;
+		return me
 	},
 
 	/**
@@ -607,12 +605,12 @@ Matrix.prototype = {
 	 */
 	isIdentity: function() {
 		var me = this;
-		return (me._q(me.a, 1) &&
-				me._q(me.b, 0) &&
-				me._q(me.c, 0) &&
-				me._q(me.d, 1) &&
-				me._q(me.e, 0) &&
-				me._q(me.f, 0));
+		return me._q(me.a, 1) &&
+			   me._q(me.b, 0) &&
+			   me._q(me.c, 0) &&
+			   me._q(me.d, 1) &&
+			   me._q(me.e, 0) &&
+			   me._q(me.f, 0);
 	},
 
 	/**
@@ -624,10 +622,10 @@ Matrix.prototype = {
 	},
 
 	/**
-	 * Test if matrix is valid.
+	 * Test if matrix is valid (here meaning the scale values are non-zero).
 	 */
 	isValid : function() {
-		return !this._q(this.a * this.d, 0);
+		return !this._q(this.a * this.d, 0)
 	},
 
 	/**
@@ -646,7 +644,7 @@ Matrix.prototype = {
 		m.f = me.f;
 		if (!noContext) m.context = me.context;
 
-		return m;
+		return m
 	},
 
 	/**
@@ -660,12 +658,12 @@ Matrix.prototype = {
 		var me = this,
 			q = me._q;
 
-		return (q(me.a, m.a) &&
-				q(me.b, m.b) &&
-				q(me.c, m.c) &&
-				q(me.d, m.d) &&
-				q(me.e, m.e) &&
-				q(me.f, m.f));
+		return q(me.a, m.a) &&
+			   q(me.b, m.b) &&
+			   q(me.c, m.c) &&
+			   q(me.d, m.d) &&
+			   q(me.e, m.e) &&
+			   q(me.f, m.f)
 	},
 
 	/**
@@ -674,7 +672,7 @@ Matrix.prototype = {
 	 */
 	toArray: function() {
 		var me = this;
-		return [me.a, me.b, me.c, me.d, me.e, me.f];
+		return [me.a, me.b, me.c, me.d, me.e, me.f]
 	},
 
 	/**
@@ -682,7 +680,7 @@ Matrix.prototype = {
 	 * @returns {string}
 	 */
 	toCSS: function() {
-		return "matrix(" + this.toArray() + ")";
+		return "matrix(" + this.toArray() + ")"
 	},
 
 	/**
@@ -691,7 +689,7 @@ Matrix.prototype = {
 	 */
 	toJSON: function() {
 		var me = this;
-		return '{"a":' + me.a + ',"b":' + me.b + ',"c":' + me.c + ',"d":' + me.d + ',"e":' + me.e + ',"f":' + me.f + '}';
+		return '{"a":' + me.a + ',"b":' + me.b + ',"c":' + me.c + ',"d":' + me.d + ',"e":' + me.e + ',"f":' + me.f + '}'
 	},
 
 	/**
@@ -699,7 +697,7 @@ Matrix.prototype = {
 	 * @returns {string}
 	 */
 	toString: function() {
-		return "" + this.toArray();
+		return "" + this.toArray()
 	},
 
 	/**
@@ -710,7 +708,7 @@ Matrix.prototype = {
 	 * @private
 	 */
 	_q: function(f1, f2) {
-		return Math.abs(f1 - f2) < 1e-14;
+		return Math.abs(f1 - f2) < 1e-14
 	},
 
 	/**
@@ -721,9 +719,9 @@ Matrix.prototype = {
 		var me = this;
 		if (me.context)
 			me.context.setTransform(me.a, me.b, me.c, me.d, me.e, me.f);
-		return me;
+		return me
 	}
 };
 
-// Node
-if (typeof exports !== "undefined") {exports.Matrix = Matrix}
+// Node support
+if (typeof exports !== "undefined") exports.Matrix = Matrix;

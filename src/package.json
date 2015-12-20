@@ -1,6 +1,6 @@
 {
   "name": "transformation-matrix-js",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "2D affine matrix power tools for JavaScript",
   "main": "matrix.js",
   "scripts": {

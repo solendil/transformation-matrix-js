@@ -26,7 +26,7 @@
 		this.x = x;
 		this.y = y;
 		this.vx = vx || 1;
-		this.vy = vx || 1;
+		this.vy = vy || 1;
 		this.radius = r || 4;
 		this.isHit = false;
 
@@ -36,8 +36,8 @@
 			this.y += this.vy;
 
 			// collision? NOTE: the detections in here are not
-			// accurate but will do for demoing the reflection.
-			// Some is compensated for using sub-framing in the loop.
+			// super-accurate but will do for demoing the reflection.
+			// Some is compensated for by using sub-framing in the loop.
 
 			if (this.x <= 0 || this.x >= w) {
 				this.vx = -this.vx;
@@ -73,7 +73,7 @@
 	    rx = 200,
 	    ry = 7,
 	    rect = [-rx, -ry, rx, -ry, rx, ry, -rx, ry],
-		rdlt = 0.007,
+		rdlt = 0.005,
 		ctx = document.getElementById("canvas").getContext("2d");
 
 	matrixRect.translate(200, 200);

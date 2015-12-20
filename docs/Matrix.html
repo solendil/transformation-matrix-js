@@ -35,6 +35,20 @@
 					</ul>
 				</li>
 				
+				<li class="dropdown">
+					<a href="tutorials.list.html" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="tutorial-node.html">node</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
 			</ul>
 		</div>
 	</div>
@@ -74,9 +88,7 @@
     
     <div class="description">
         <p>2D transformation matrix object initialized with identity matrix.</p>
-<p>The matrix can synchronize a canvas context by supplying the context
-as an argument, or later apply current absolute transform to an
-existing context.</p>
+<p>The matrix can synchronize a canvas context by supplying the context<br>as an argument, or later apply current absolute transform to an<br>existing context.</p>
 <p>All values are handled as floating point values.</p>
     </div>
     
@@ -493,14 +505,12 @@ existing context.</p>
     
     
     <div class="description">
-        <p>Apply current matrix to array with point objects or point pairs.
-Returns a new array with points in the same format as the input array.</p>
+        <p>Apply current matrix to array with point objects or point pairs.<br>Returns a new array with points in the same format as the input array.</p>
 <p>A point object is an object literal:</p>
 <p>{x: x, y: y}</p>
 <p>so an array would contain either:</p>
 <p>[{x: x1, y: y1}, {x: x2, y: y2}, ... {x: xn, y: yn}]</p>
-<p>or
-[x1, y1, x2, y2, ... xn, yn]</p>
+<p>or<br>[x1, y1, x2, y2, ... xn, yn]</p>
     </div>
     
 
@@ -638,9 +648,7 @@ Returns a new array with points in the same format as the input array.</p>
     
     
     <div class="description">
-        <p>Apply to any canvas 2D context object. This does not affect the
-context that optionally was referenced in constructor unless it is
-the same context.</p>
+        <p>Apply to any canvas 2D context object. This does not affect the<br>context that optionally was referenced in constructor unless it is<br>the same context.</p>
     </div>
     
 
@@ -755,8 +763,7 @@ the same context.</p>
     
     
     <div class="description">
-        <p>Apply current matrix to x and y point.
-Returns a point object.</p>
+        <p>Apply current matrix to x and y point.<br>Returns a point object.</p>
     </div>
     
 
@@ -917,10 +924,7 @@ Returns a point object.</p>
     
     
     <div class="description">
-        <p>Apply current matrix to a typed array with point pairs. Although
-the input array may be an ordinary array, this method is intended
-for more performant use where typed arrays are used. The returned
-array is regardless always returned as a Float32Array.</p>
+        <p>Apply current matrix to a typed array with point pairs. Although<br>the input array may be an ordinary array, this method is intended<br>for more performant use where typed arrays are used. The returned<br>array is regardless always returned as a Float32Array.</p>
     </div>
     
 
@@ -1267,8 +1271,7 @@ array is regardless always returned as a Float32Array.</p>
     
     
     <div class="description">
-        <p>Concatenates transforms of this matrix onto the given child matrix and
-returns a new matrix. This instance is used on left side.</p>
+        <p>Concatenates transforms of this matrix onto the given child matrix and<br>returns a new matrix. This instance is used on left side.</p>
     </div>
     
 
@@ -1402,9 +1405,7 @@ returns a new matrix. This instance is used on left side.</p>
     
     
     <div class="description">
-        <p>Decompose the current matrix into simple transforms using either
-QR (default) or LU decomposition. Code adapted from
-http://www.maths-informatique-jeux.com/blog/frederic/?post/2013/12/01/Decomposition-of-2D-transform-matrices</p>
+        <p>Decompose the current matrix into simple transforms using either<br>QR (default) or LU decomposition. Code adapted from<br>http://www.maths-informatique-jeux.com/blog/frederic/?post/2013/12/01/Decomposition-of-2D-transform-matrices</p>
 <p>The result must be applied in the following order to reproduce the current matrix:</p>
 <pre class="prettyprint source"><code>QR: translate -> rotate -> scale -> skewX
 LU: translate -> skewY  -> scale -> skewX</code></pre>
@@ -2052,12 +2053,9 @@ LU: translate -> skewY  -> scale -> skewX</code></pre>
     
     
     <div class="description">
-        <p>Interpolate this matrix with another and produce a new matrix.
-t is a value in the range [0.0, 1.0] where 0 is this instance and
-1 is equal to the second matrix. The t value is not constrained.</p>
+        <p>Interpolate this matrix with another and produce a new matrix.<br>t is a value in the range [0.0, 1.0] where 0 is this instance and<br>1 is equal to the second matrix. The t value is not constrained.</p>
 <p>Context from parent matrix is not applied to the returned matrix.</p>
-<p>Note: this interpolation is naive. For animation use the
-intrpolateAnim() method instead.</p>
+<p>Note: this interpolation is naive. For animation use the<br>intrpolateAnim() method instead.</p>
     </div>
     
 
@@ -2271,13 +2269,9 @@ intrpolateAnim() method instead.</p>
     
     
     <div class="description">
-        <p>Interpolate this matrix with another and produce a new matrix.
-t is a value in the range [0.0, 1.0] where 0 is this instance and
-1 is equal to the second matrix. The t value is not constrained.</p>
+        <p>Interpolate this matrix with another and produce a new matrix.<br>t is a value in the range [0.0, 1.0] where 0 is this instance and<br>1 is equal to the second matrix. The t value is not constrained.</p>
 <p>Context from parent matrix is not applied to the returned matrix.</p>
-<p>Note: this interpolation method uses decomposition which makes
-it suitable for animations (in particular where rotation takes
-places).</p>
+<p>Note: this interpolation method uses decomposition which makes<br>it suitable for animations (in particular where rotation takes<br>places).</p>
     </div>
     
 
@@ -2491,9 +2485,7 @@ places).</p>
     
     
     <div class="description">
-        <p>Get an inverse matrix of current matrix. The method returns a new
-matrix with values you need to use to get to an identity matrix.
-Context from parent matrix is not applied to the returned matrix.</p>
+        <p>Get an inverse matrix of current matrix. The method returns a new<br>matrix with values you need to use to get to an identity matrix.<br>Context from parent matrix is not applied to the returned matrix.</p>
     </div>
     
 
@@ -2578,8 +2570,7 @@ Context from parent matrix is not applied to the returned matrix.</p>
     
     
     <div class="description">
-        <p>Compares current matrix with another matrix. Returns true if equal
-(within epsilon tolerance).</p>
+        <p>Compares current matrix with another matrix. Returns true if equal<br>(within epsilon tolerance).</p>
     </div>
     
 
@@ -2887,7 +2878,7 @@ Context from parent matrix is not applied to the returned matrix.</p>
     
     
     <div class="description">
-        <p>Test if matrix is valid.</p>
+        <p>Test if matrix is valid (here meaning the scale values are non-zero).</p>
     </div>
     
 
@@ -2953,9 +2944,7 @@ Context from parent matrix is not applied to the returned matrix.</p>
     
     
     <div class="description">
-        <p>Reflects incoming (velocity) vector on the normal which will be the
-current transformed x axis. Call when a trigger condition is met.</p>
-<p>NOTE: BETA, simple implementation</p>
+        <p>Reflects incoming (velocity) vector on the normal which will be the<br>current transformed x axis. Call when a trigger condition is met.</p>
     </div>
     
 
@@ -3408,8 +3397,7 @@ current transformed x axis. Call when a trigger condition is met.</p>
     
     
     <div class="description">
-        <p>Converts a vector given as x and y to angle, and
-rotates (accumulative).</p>
+        <p>Converts a vector given as x and y to angle, and<br>rotates (accumulative).</p>
     </div>
     
 
@@ -5960,8 +5948,8 @@ rotates (accumulative).</p>
 					<br />
 					
 		<span class="jsdoc-message">
-		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.1</a>
-		on Fri Nov 6th 2015 using the <a
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+		on Sat Dec 19th 2015 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

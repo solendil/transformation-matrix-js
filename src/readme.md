@@ -10,13 +10,12 @@ It's primarily intended for situations where you need to track or create
 transforms and want to apply it permanently/manually to your own points
 and polygons.
 
-The matrix can optionally synchronize a canvas 2D context object so the
+The matrix can optionally synchronize a canvas 2D context so that the 
 transformations on the canvas matches pixel perfect the local
-transformations of the Matrix object.
+transformations of the Matrix object. It can be used to synchronize a
+DOM element using the toCSS() method.
 
-Using toCSS() can synchronize a DOM element as well.
-
-No dependencies.
+No dependencies. Node support.
 
 
 Install
@@ -40,16 +39,22 @@ Using NPM
 
     $ npm install transformation-matrix-js
 
+
 Usage
 -----
 
-Just include the script and create a new instance like:
+Just include the script and create a new instance:
 
     var matrix = new Matrix([context]);
 
-You can supply an optional context as argument which in case will be
+You can supply an optional canvas 2D context as argument, which will be 
 synchronized with the transformations that are applied to the matrix
 object.
+
+Using it with Node - use npm to install the package first, then:
+
+    var demo = require("transformation-matrix-js");
+    var matrix = new demo.Matrix();
 
 Some of the methods:
 
@@ -114,7 +119,7 @@ or apply to a canvas context (other than optionally referenced in constructor):
     matrix.applyToContext(myContext);
 
 Get inverse transformation matrix (the matrix you need to apply to get back
-to a identity matrix from whatever the matrix contains):
+to an identity matrix from whatever the matrix contains):
 
     var invmatrix = matrix.inverse();
 
@@ -149,11 +154,11 @@ Reset matrix to an identity matrix:
 
     matrix.reset();
 
-Methods are also chain-able:
+Methods are chainable:
 
     matrix.rotateDeg(45).translate(100, 120);     // rotate, then translate
 
-For CSS you could do:
+To synchronize a DOM element:
 
     elem.style.transform = matrix.toCSS();        // some browsers may need prefix
 

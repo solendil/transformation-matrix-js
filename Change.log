@@ -1,6 +1,9 @@
 Change log for 2D Transformation Matrix
 ---------------------------------------
 
+2.0.2
+IMP: Minor optimizations, node/docs
+
 2.0.1
 ADD: NPM package + Node support
 
