@@ -68,7 +68,7 @@
 	ctx.strokeRect(100, 100, 800, 300);
 
 	// draw custom transformed rectangle
-	ctx.setTransform(1, 0, 0, 1, 0, 0); // reset for demo so transforms doesn't add up
+	ctx.setTransform(1, 0, 0, 1, 0, 0); // reset for demo so transforms don't accumulate
 	ctx.strokeStyle = 'rgba(0,0,255,0.5)';
 	ctx.moveTo(rect[0].x, rect[0].y);
 	ctx.lineTo(rect[1].x, rect[1].y);

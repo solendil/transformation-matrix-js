@@ -10,10 +10,10 @@ It's primarily intended for situations where you need to track or create
 transforms and want to apply it permanently/manually to your own points
 and polygons.
 
-The matrix can optionally synchronize a canvas 2D context so that the 
+The matrix can optionally synchronize a canvas 2D context so that the
 transformations on the canvas matches pixel perfect the local
 transformations of the Matrix object. It can be used to synchronize a
-DOM element using the toCSS() method.
+DOM element using the toCSS()/toCSS3D() method.
 
 No dependencies. Node support.
 
@@ -47,7 +47,7 @@ Just include the script and create a new instance:
 
     var matrix = new Matrix([context]);
 
-You can supply an optional canvas 2D context as argument, which will be 
+You can supply an optional canvas 2D context as argument, which will be
 synchronized with the transformations that are applied to the matrix
 object.
 
@@ -62,7 +62,9 @@ Some of the methods:
     matrix.toString();
     matrix.toJSON();
     matrix.toCSS();
+    matrix.toCSS3D();
     matrix.toArray();
+	matrix.toTypedArray();				// binary array
     matrix.rotate(angle);    		    // angle in radians
     matrix.rotateDeg(angle);   		    // angle in degrees
     matrix.rotateFromVector(x, y);      // use a vector to set angle
@@ -163,6 +165,16 @@ To synchronize a DOM element:
     elem.style.transform = matrix.toCSS();        // some browsers may need prefix
 
 See documentation for full overview and usage.
+
+
+Contributors
+------------
+
+- Ken "Fyrstenberg" Nilsen (creator) (https://github.com/epistemex)
+- Leon Sorokin (https://github.com/leeoniya)
+- Henry Ruhs (https://github.com/redaxmedia)
+
+See Change.log for details.
 
 
 License

@@ -1,6 +1,12 @@
 Change log for 2D Transformation Matrix
 ---------------------------------------
 
+2.1.0
+ADD: toCSS3D() (H)
+ADD: toTypedArray([use64bit])
+
+Thanks to https://github.com/redaxmedia (H) for this contribution.
+
 2.0.2
 IMP: Minor optimizations, node/docs
 

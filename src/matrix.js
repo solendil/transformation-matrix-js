@@ -1,11 +1,10 @@
 /*!
-	2D Transformation Matrix v2.0.2
-
+	2D Transformation Matrix v2.1.0
 	(c) Epistemex.com 2014-2016
-	By Ken Nilsen
-	Contributions: leeoniya.
 	License: MIT, header required.
 */
+
+/* --- For contributors: please see readme.md and Change.log --- */
 
 /**
  * 2D transformation matrix object initialized with identity matrix.
@@ -676,11 +675,38 @@ Matrix.prototype = {
 	},
 
 	/**
-	 * Generates a string that can be used with CSS `transform:`.
+	 * Returns a binary typed array, either as 32-bit (default) or
+	 * 64-bit.
+	 * @param {boolean} [use64=false] chose whether to use 32-bit or 64-bit typed array
+	 * @returns {*}
+	 */
+	toTypedArray: function(use64) {
+		var a = use64 ? new Float64Array(6) : new Float32Array(6),
+			me = this;
+		a[0] = me.a;
+		a[1] = me.b;
+		a[2] = me.c;
+		a[3] = me.d;
+		a[4] = me.e;
+		a[5] = me.f;
+		return a
+	},
+
+	/**
+	 * Generates a string that can be used with CSS `transform`.
 	 * @returns {string}
 	 */
 	toCSS: function() {
 		return "matrix(" + this.toArray() + ")"
+	},
+
+	/**
+	 * Generates a matrix3d() string that can be used with CSS `transform`.
+	 * @returns {string}
+	 */
+	toCSS3D: function () {
+		var me = this;
+		return "matrix3d(" + me.a + "," + me.b + ",0,0," + me.c + "," + me.d + ",0,0,0,0,1,0," + me.e + "," + me.f + ",0,1)"
 	},
 
 	/**
