@@ -284,6 +284,40 @@ Matrix.prototype = {
 	},
 
 	/**
+	 * Multiplies current matrix with an other matrix.
+	 * @param {Matrix} m - the other matrix
+	 */
+	multiply: function(m) {
+		return this._t(m.a, m.b, m.c, m.d, m.e, m.f);
+	},
+
+	/**
+	 * Returns a new matrix that transforms a triangle T1 into another triangle
+	 * T2, or throws an exception if it is impossible.
+	 * @param {number} t1px - triangle T1, point P, coord x
+	 * @param {number} t1px - triangle T1, point P, coord y
+	 * @param {number} t1px - triangle T1, point Q, coord x
+	 * @param {number} t1px - triangle T1, point Q, coord y
+	 * @param {number} t1px - triangle T1, point R, coord x
+	 * @param {number} t1px - triangle T1, point R, coord y
+	 * @param {number} t2px - triangle T2, point P, coord x
+	 * @param {number} t2px - triangle T2, point P, coord y
+	 * @param {number} t2px - triangle T2, point Q, coord x
+	 * @param {number} t2px - triangle T2, point Q, coord y
+	 * @param {number} t2px - triangle T2, point R, coord x
+	 * @param {number} t2px - triangle T2, point R, coord y
+	 * @returns {Matrix}
+	 */
+	getTriangleToTriangleMatrix: function(t1px, t1py, t1qx, t1qy, t1rx, t1ry, t2px, t2py, t2qx, t2qy, t2rx, t2ry) {
+		// this algorithm uses the standard triangle STD (1,0)(0,1)(0,0) as a pivot
+		// it might not be optimal
+		var STD2T1 = new Matrix().setTransform(t1px-t1rx, t1py-t1ry, t1qx-t1rx, t1qy-t1ry, t1rx, t1ry);
+		var STD2T2 = new Matrix().setTransform(t2px-t2rx, t2py-t2ry, t2qx-t2rx, t2qy-t2ry, t2rx, t2ry);
+		var T12STD = STD2T1.inverse();
+	  return T12STD.multiply(STD2T2);
+	},
+
+	/**
 	 * Divide this matrix on input matrix which must be invertible.
 	 * @param {Matrix} m - matrix to divide on (divisor)
 	 * @returns {Matrix}

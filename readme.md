@@ -94,6 +94,7 @@ Some of the methods:
 	matrix.isValid();
     matrix.reflectVector(x, y)         // reflects vector on normal (=current x-axis);
     matrix.concat(childMatrix)
+    matrix.getTriangleToTriangleMatrix([T1],[T2]);  
 
 Get current transform matrix properties:
 
@@ -119,6 +120,11 @@ Apply to an Array with point objects or point pair values:
 or apply to a canvas context (other than optionally referenced in constructor):
 
     matrix.applyToContext(myContext);
+
+Get a matrix that transforms a given triangle into another one:
+
+    matrix.getTriangleToTriangleMatrix(t1px, t1py, t1qx, t1qy, t1rx, t1ry,
+                                       t2px, t2py, t2qx, t2qy, t2rx, t2ry);  
 
 Get inverse transformation matrix (the matrix you need to apply to get back
 to an identity matrix from whatever the matrix contains):
@@ -173,6 +179,7 @@ Contributors
 - Ken "Fyrstenberg" Nilsen (creator) (https://github.com/epistemex)
 - Leon Sorokin (https://github.com/leeoniya)
 - Henry Ruhs (https://github.com/redaxmedia)
+- Matthieu Dumas (https://github.com/solendil)
 
 See Change.log for details.
 
