@@ -314,7 +314,7 @@ Matrix.prototype = {
 		var STD2T1 = new Matrix().setTransform(t1px-t1rx, t1py-t1ry, t1qx-t1rx, t1qy-t1ry, t1rx, t1ry);
 		var STD2T2 = new Matrix().setTransform(t2px-t2rx, t2py-t2ry, t2qx-t2rx, t2qy-t2ry, t2rx, t2ry);
 		var T12STD = STD2T1.inverse();
-	  return T12STD.multiply(STD2T2);
+	  return STD2T2.multiply(T12STD);
 	},
 
 	/**
